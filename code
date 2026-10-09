@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>وب‌سایت من</title>
+
+<style>
+:root {
+    --bg: #080b14;
+    --text: #ffffff;
+    --muted: #b8bfd2;
+    --card: #ffffff08;
+    --border: #ffffff20;
+    --accent: #8da9ff;
+    --header: #0b1020;
+}
+
+body.light {
+    --bg: #f3f5fc;
+    --text: #171a2b;
+    --muted: #555d73;
+    --card: #ffffff;
+    --border: #dce1ee;
+    --accent: #405bd6;
+    --header: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background .25s, color .25s;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 5%;
+    background: var(--header);
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    font-size: clamp(17px, 3vw, 23px);
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.controls {
+    display: flex;
+    gap: 8px;
+}
+
+button {
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    padding: 10px 13px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+button:hover {
+    border-color: var(--accent);
+}
+
+main {
+    width: min(100% - 32px, 1000px);
+    margin: auto;
+}
+
+.hero {
+    min-height: 72vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 0;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #5078ff, #a14dff);
+    color: white;
+    font-size: 42px;
+    font-weight: bold;
+    box-shadow: 0 0 45px #7050ff44;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(27px, 6vw, 55px);
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.highlight {
+    color: var(--accent);
+}
+
+.description {
+    max-width: 650px;
+    color: var(--muted);
+    font-size: clamp(14px, 2.5vw, 18px);
+    line-height: 2.2;
+}
+
+.primary {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 13px 25px;
+    background: linear-gradient(100deg, #426cff, #9250ed);
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.section {
+    padding: 45px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(23px, 4vw, 33px);
+    margin-bottom: 28px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.card {
+    padding: 25px 18px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    border-radius: 17px;
+    text-align: center;
+}
+
+.card .icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 2;
+}
+
+.support-page {
+    display: none;
+    min-height: 65vh;
+    padding: 65px 0;
+    text-align: center;
+}
+
+.support-page.active {
+    display: block;
+}
+
+.support-page p {
+    color: var(--muted);
+    line-height: 2.2;
+    margin-top: 15px;
+}
+
+.home-page.hidden {
+    display: none;
+}
+
+footer {
+    margin-top: 45px;
+    padding: 35px 15px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+.credit {
+    font-size: clamp(17px, 3vw, 22px);
+    font-weight: bold;
+    line-height: 2;
+}
+
+.footer-logo {
+    width: 65px;
+    height: 65px;
+    margin: 20px auto 12px;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+@media (max-width: 650px) {
+    header {
+        padding: 13px 4%;
+    }
+
+    .controls {
+        gap: 5px;
+    }
+
+    button {
+        padding: 9px 10px;
+        font-size: 12px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: 65vh;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand" id="brand">وب‌سایت من</div>
+
+    <div class="controls">
+        <button id="languageButton" onclick="toggleLanguage()">EN</button>
+        <button id="themeButton" onclick="toggleTheme()">☀️</button>
+    </div>
+</header>
+
+<main>
+
+    <div id="homePage" class="home-page">
+
+        <section class="hero">
+            <div class="logo">✦</div>
+
+            <h1 id="heading">
+                به دنیای <span class="highlight">من</span> خوش اومدی!
+            </h1>
+
+            <p class="description" id="description">
+                این یک وب‌سایت شخصی با طراحی مدرن و سازگار با موبایل
+                و کامپیوتر است.
+            </p>
+
+            <a href="#about" class="primary" id="moreButton">
+                بیشتر بدان ↓
+            </a>
+        </section>
+
+        <section class="section" id="about">
+            <h2 class="section-title" id="aboutTitle">امکانات سایت</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <div class="icon">📱</div>
+                    <h3 id="cardTitle1">مناسب موبایل</h3>
+                    <p id="cardText1">ظاهر سایت با اندازه صفحه هماهنگ می‌شود.</p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">💻</div>
+                    <h3 id="cardTitle2">مناسب کامپیوتر</h3>
+                    <p id="cardText2">در صفحه‌های بزرگ هم درست نمایش داده می‌شود.</p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">🛟</div>
+                    <h3 id="cardTitle3">پشتیبانی</h3>
+                    <p id="cardText3">برای دیدن بخش پشتیبانی دکمه زیر را بزن.</p>
+                    <button onclick="openSupport()" id="supportButton">ورود به پشتیبانی</button>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <section id="supportPage" class="support-page">
+        <h1 id="supportHeading">پشتیبانی</h1>
+
+        <p id="supportDescription">
+            به بخش پشتیبانی خوش آمدی.<br>
+            این صفحه فعلاً آماده اتصال به راه ارتباطی توست.
+        </p>
+
+        <button onclick="goHome()" id="backButton" style="margin-top:25px">
+            بازگشت به خانه
+        </button>
+    </section>
+
+</main>
+
+<footer>
+    <div class="credit" id="credit">
+        ساخته شده توسط چند تا کص‌خل 😂
+    </div>
+
+    <div class="footer-logo">GPT</div>
+
+    <div class="muted" id="footerText">با کمک ChatGPT</div>
+    <div class="muted" style="margin-top:20px">HTML · CSS · JavaScript</div>
+</footer>
+
+<script>
+let english = false;
+
+function toggleTheme() {
+    document.body.classList.toggle("light");
+
+    const isLight = document.body.classList.contains("light");
+    document.getElementById("themeButton").textContent =
+        isLight ? "🌙" : "☀️";
+
+    localStorage.setItem("siteTheme", isLight ? "light" : "dark");
+}
+
+function toggleLanguage() {
+    english = !english;
+
+    document.documentElement.lang = english ? "en" : "fa";
+    document.documentElement.dir = english ? "ltr" : "rtl";
+
+    const text = english ? {
+        brand: "My Website",
+        language: "FA",
+        heading: 'Welcome to <span class="highlight">My World</span>!',
+        description: "A modern personal website that works on phones and computers.",
+        more: "Explore ↓",
+        about: "Website Features",
+        title1: "Mobile Friendly",
+        text1: "The layout adapts to your screen size.",
+        title2: "Desktop Friendly",
+        text2: "Works on larger screens too.",
+        title3: "Support",
+        text3: "Open the support section using the button below.",
+        supportButton: "Open Support",
+        supportHeading: "Support",
+        supportDescription: "Welcome to the support section.<br>This page is ready to be connected to your preferred contact method.",
+        back: "Back Home",
+        credit: "Made by a bunch of crazy people 😂",
+        footer: "Made with help from ChatGPT"
+    } : {
+        brand: "وب‌سایت من",
+        language: "EN",
+        heading: 'به دنیای <span class="highlight">من</span> خوش اومدی!',
+        description: "این یک وب‌سایت شخصی با طراحی مدرن و سازگار با موبایل و کامپیوتر است.",
+        more: "بیشتر بدان ↓",
+        about: "امکانات سایت",
+        title1: "مناسب موبایل",
+        text1: "ظاهر سایت با اندازه صفحه هماهنگ می‌شود.",
+        title2: "مناسب کامپیوتر",
+        text2: "در صفحه‌های بزرگ هم درست نمایش داده می‌شود.",
+        title3: "پشتیبانی",
+        text3: "برای دیدن بخش پشتیبانی دکمه زیر را بزن.",
+        supportButton: "ورود به پشتیبانی",
+        supportHeading: "پشتیبانی",
+        supportDescription: "به بخش پشتیبانی خوش آمدی.<br>این صفحه فعلاً آماده اتصال به راه ارتباطی توست.",
+        back: "بازگشت به خانه",
+        credit: "ساخته شده توسط چند تا کص‌خل 😂",
+        footer: "با کمک ChatGPT"
+    };
+
+    document.getElementById("brand").textContent = text.brand;
+    document.getElementById("languageButton").textContent = text.language;
+    document.getElementById("heading").innerHTML = text.heading;
+    document.getElementById("description").textContent = text.description;
+    document.getElementById("moreButton").textContent = text.more;
+    document.getElementById("aboutTitle").textContent = text.about;
+    document.getElementById("cardTitle1").textContent = text.title1;
+    document.getElementById("cardText1").textContent = text.text1;
+    document.getElementById("cardTitle2").textContent = text.title2;
+    document.getElementById("cardText2").textContent = text.text2;
+    document.getElementById("cardTitle3").textContent = text.title3;
+    document.getElementById("cardText3").textContent = text.text3;
+    document.getElementById("supportButton").textContent = text.supportButton;
+    document.getElementById("supportHeading").textContent = text.supportHeading;
+    document.getElementById("supportDescription").innerHTML = text.supportDescription;
+    document.getElementById("backButton").textContent = text.back;
+    document.getElementById("credit").textContent = text.credit;
+    document.getElementById("footerText").textContent = text.footer;
+}
+
+function openSupport() {
+    document.getElementById("homePage").classList.add("hidden");
+    document.getElementById("supportPage").classList.add("active");
+    window.scrollTo(0, 0);
+}
+
+function goHome() {
+    document.getElementById("supportPage").classList.remove("active");
+    document.getElementById("homePage").classList.remove("hidden");
+    window.scrollTo(0, 0);
+}
+
+if (localStorage.getItem("siteTheme") === "light") {
+    document.body.classList.add("light");
+    document.getElementById("themeButton").textContent = "🌙";
+}
+</script>
+
+</body>
+</html>
